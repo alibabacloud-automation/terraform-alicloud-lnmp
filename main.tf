@@ -4,12 +4,7 @@ data "alicloud_images" "centos" {
 }
 # Create an ECS Instance to deploy lnmp
 module "ecs-instance" {
-  source                  = "alibaba/ecs-instance/alicloud"
-  profile                 = var.profile != "" ? var.profile : null
-  shared_credentials_file = var.shared_credentials_file != "" ? var.shared_credentials_file : null
-  region                  = var.region != "" ? var.region : null
-  skip_region_validation  = var.skip_region_validation
-
+  source = "alibaba/ecs-instance/alicloud"
 
   number_of_instances = var.number_of_instances
   use_num_suffix      = var.use_num_suffix
@@ -19,7 +14,7 @@ module "ecs-instance" {
   image_id      = var.image_id != "" ? var.image_id : data.alicloud_images.centos.ids.0
   instance_type = var.instance_type
 
-  instance_charge_type = "PostPaid"
+  instance_charge_type = var.instance_charge_type
   system_disk_category = var.system_disk_category
   system_disk_size     = var.system_disk_size
 
@@ -28,12 +23,12 @@ module "ecs-instance" {
   private_ips        = [var.private_ip]
 
   internet_charge_type        = var.internet_charge_type
-  associate_public_ip_address = true
+  associate_public_ip_address = var.associate_public_ip_address
   internet_max_bandwidth_out  = var.internet_max_bandwidth_out
 
   resource_group_id   = var.resource_group_id
   deletion_protection = var.deletion_protection
-  force_delete        = true
+  force_delete        = var.force_delete
   tags = merge(
     {
       Created     = "Terraform"
