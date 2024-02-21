@@ -55,7 +55,7 @@ module "lnmp" {
   internet_max_bandwidth_out  = var.internet_max_bandwidth_out
 
   resource_group_id   = data.alicloud_resource_manager_resource_groups.default.groups.0.id
-  deletion_protection = var.deletion_protection
+  deletion_protection = "false"
   force_delete        = var.force_delete
   tags                = var.tags
   data_disks = [{
