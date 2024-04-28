@@ -1,7 +1,6 @@
 instance_name              = "update-tf-test-lnmp"
 instance_password          = "YourPassword123!update"
 instance_charge_type       = "PrePaid"
-system_disk_size           = "50"
 private_ip                 = "172.16.0.11"
 internet_charge_type       = "PayByBandwidth"
 internet_max_bandwidth_out = "20"
