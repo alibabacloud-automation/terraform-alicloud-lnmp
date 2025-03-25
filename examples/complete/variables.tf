@@ -41,12 +41,6 @@ variable "internet_max_bandwidth_out" {
   default     = 10
 }
 
-variable "deletion_protection" {
-  description = "Whether enable the deletion protection or not. 'true': Enable deletion protection. 'false': Disable deletion protection."
-  type        = bool
-  default     = true
-}
-
 variable "force_delete" {
   description = "If it is true, the 'PrePaid' instance will be change to 'PostPaid' and then deleted forcibly. However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that 'Don't modify instance charge type frequentlly in one month'."
   type        = bool

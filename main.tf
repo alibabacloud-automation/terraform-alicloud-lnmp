@@ -4,14 +4,15 @@ data "alicloud_images" "centos" {
 }
 # Create an ECS Instance to deploy lnmp
 module "ecs-instance" {
-  source = "alibaba/ecs-instance/alicloud"
+  source  = "alibaba/ecs-instance/alicloud"
+  version = "2.12.0"
 
   number_of_instances = var.number_of_instances
   use_num_suffix      = var.use_num_suffix
 
   instance_name = var.instance_name
   password      = var.instance_password
-  image_id      = var.image_id != "" ? var.image_id : data.alicloud_images.centos.ids.0
+  image_id      = var.image_id != "" ? var.image_id : data.alicloud_images.centos.ids[0]
   instance_type = var.instance_type
 
   instance_charge_type = var.instance_charge_type
