@@ -1,3 +1,7 @@
+provider "alicloud" {
+  region = "cn-zhangjiakou"
+}
+
 data "alicloud_zones" "default" {
 }
 
@@ -13,7 +17,7 @@ data "alicloud_instance_types" "default" {
   instance_charge_type = var.instance_charge_type
   cpu_core_count       = 2
   memory_size          = 8
-  instance_type_family = "ecs.g6"
+  instance_type_family = "ecs.g9i"
 }
 
 # Create a new vpc using terraform module
@@ -32,8 +36,9 @@ module "security_group" {
   source  = "alibaba/security-group/alicloud"
   version = "~> 2.4"
 
-  vpc_id              = module.vpc.this_vpc_id
-  ingress_cidr_blocks = ["0.0.0.0/0"]
+  vpc_id = module.vpc.this_vpc_id
+  # ingress_cidr_blocks = ["0.0.0.0/0"]
+  ingress_cidr_blocks = ["172.16.0.0/21"]
   ingress_rules       = ["all-all"]
 }
 
@@ -50,7 +55,7 @@ module "lnmp" {
   instance_type     = data.alicloud_instance_types.default.instance_types[0].id
 
   instance_charge_type = var.instance_charge_type
-  system_disk_category = "cloud_efficiency"
+  system_disk_category = "cloud_essd"
   system_disk_size     = var.system_disk_size
 
   security_group_ids = [module.security_group.this_security_group_id]
@@ -68,7 +73,7 @@ module "lnmp" {
   data_disks = [{
     name        = "data_disks_name"
     size        = 20
-    category    = "cloud_efficiency"
+    category    = "cloud_essd"
     description = "tf-lnmp-description"
     encrypted   = true
   }]
