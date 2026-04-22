@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/alibabacloud-automation/terraform-alicloud-lnmp/compare/v3.0.0...v3.0.1) (2026-04-22)
+
+
+### Bug Fixes
+
+* update version of the dependency module ([a1b9c94](https://github.com/alibabacloud-automation/terraform-alicloud-lnmp/commit/a1b9c94d95d55fd7a0194e8400f8bf4cd316d58d))
+
 ## [3.0.0](https://github.com/alibabacloud-automation/terraform-alicloud-lnmp/compare/v2.0.1...v3.0.0) (2026-04-22)
 
 
