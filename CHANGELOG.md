@@ -1,3 +1,14 @@
+## [3.0.0](https://github.com/alibabacloud-automation/terraform-alicloud-lnmp/compare/v2.0.1...v3.0.0) (2026-04-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* add provider version constraint for aliyun/alicloud
+
+### Features
+
+* add provider version constraint for aliyun/alicloud ([90c8375](https://github.com/alibabacloud-automation/terraform-alicloud-lnmp/commit/90c837569413304413205af6a95e51ba0fbe9232))
+
 ## [2.0.1](https://github.com/alibabacloud-automation/terraform-alicloud-lnmp/compare/v2.0.0...v2.0.1) (2025-12-02)
 
 ## 2.1.0 (Unreleased)
